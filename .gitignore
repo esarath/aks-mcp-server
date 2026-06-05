@@ -1,0 +1,21 @@
+# Terraform provider binaries and cache — large files, not needed in git
+.terraform/
+
+# Terraform plan file — binary, environment-specific, not for git
+tfplan
+
+# Terraform state files — never commit state to git (contains sensitive data)
+*.tfstate
+*.tfstate.backup
+
+# Override files
+override.tf
+override.tf.json
+
+# Crash log files
+crash.log
+crash.*.log
+
+# Sensitive variable files
+*.tfvars
+*.tfvars.json
