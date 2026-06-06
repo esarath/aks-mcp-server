@@ -1,5 +1,5 @@
 # aks-infra
-# ☸️ Production-Grade AKS PoC — Kongsberg Digital
+# ☸️ Production-Grade AKS PoC 
 
 > **Built by:** Sarath Babu | Senior DevOps & Cloud Infrastructure Engineer  
 > **Live URL:** http://20.242.133.71  
