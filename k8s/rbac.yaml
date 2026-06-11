@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: mcp-server
+  namespace: production
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: mcp-server-role
+rules:
+- apiGroups: [""]
+  resources: ["pods","services","events","nodes","namespaces"]
+  verbs: ["get","list","watch"]
+- apiGroups: [""]
+  resources: ["pods/log"]
+  verbs: ["get"]
+- apiGroups: ["apps"]
+  resources: ["deployments","statefulsets","replicasets"]
+  verbs: ["get","list","watch","patch","update"]
+- apiGroups: ["argoproj.io"]
+  resources: ["applications"]
+  verbs: ["get","list","watch","patch","update"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: mcp-server-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: mcp-server-role
+subjects:
+- kind: ServiceAccount
+  name: mcp-server
+  namespace: production
